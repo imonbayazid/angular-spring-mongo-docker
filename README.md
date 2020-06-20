@@ -53,8 +53,7 @@ If we want to run the mongodb in the docker and also want to run the spring-boot
 
 Then use the mongo container name as the mongo host 
 For example, in the application.properties use
-spring.data.mongo.host=mongodb_container
-spring.data.mongo.port=27017
+spring.data.mongo.host=mongodb_container; spring.data.mongo.port=27017
 Also they should be in the same network to communicate to each other. We can do this during running the docker image or we can use docker compose file.
 It is easy and good practice to used a docker-compose file in this case.
 
