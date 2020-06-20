@@ -1,14 +1,19 @@
 # angular-spring-mongo-docker
 This project will shows how to dockerize and run a full stack project(angular,spring,mongoDB).
 
+##Instruction:
 
 >docker-compose.yml
+
 To run both backend and frontend by building the docker files.
  
+ 
 >docker-compose -f docker-compose-online.yml up 
+
 To run both backend and frontend by fetching the docker images which are already built and uploaded to the dockerhub.
 
 -------------------------------------------------------------------------
+##Details:
 In this tutorial, we will show how to run a full stack project with angular,spring-boot,mongodb and docker.
 First, we will create a simple angular project which has a button. If we click the button it will send request to the backend(spring-boot project) to add a new item and fetch all the items. After getting data it will show the fetched data in a list on the frontend.
 We will create a docker file and dockerize the frontend and push the dockerized frontend image to our dockerhub account.
