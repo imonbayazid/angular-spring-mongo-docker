@@ -1,0 +1,31 @@
+version: '3'
+services:
+  #************Mongo DB***************
+  database_mongo:
+    container_name: mongo_container
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_ROOT_DATABASE=asmd_mongo_db
+    volumes:
+      - ./mongodb_data_container:/data/db
+      #means you want to set data on container persist on your local folder named mongo-volume . /data/db/ is a folder that already created inside the mongo container.
+    ports:
+      - 27017:27017
+    networks:
+      - asmd_net
+  #************Backend***************
+  backend_spring:
+    container_name: spring_container
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      - database_mongo
+    networks:
+      - asmd_net
+      
+networks:
+  asmd_net:
+    driver: bridge

@@ -1,0 +1,39 @@
+version: '3'
+services:
+  #************Mongo DB***************
+  database_mongo:
+    #if u run backend in the docker container then use this mongo_container as host name of the mongoDB config in the application.property file 
+    container_name: mongo_container
+    image: imonbayazid/angularspringmongodocker_database_mongodb:v1
+    ports:
+      #if 27017 port is used in your system then change the first port
+      - 27017:27017
+    networks:
+      #mongo db and spring app should be under same network to communicate each other
+      - spring_mongo_angular_docker_net
+  #************Backend***************
+  backend_spring:
+    container_name: spring_container
+    image: imonbayazid/angularspringmongodocker_backend_spring:v1
+    ports:
+      - 8080:8080
+    depends_on:
+      # make sure mongo db runs first before backend starts
+      - database_mongo
+    networks:
+      #mongo db and spring app should be under same network to communicate each other  
+      - spring_mongo_angular_docker_net
+
+  #************Backend***************
+  frontend_angular:
+    container_name: angular_container
+    image: imonbayazid/angularspringmongodocker_frontend_angular:v1
+    ports:
+      - 4200:4200
+    networks:
+      #mongo db and spring app should be under same network to communicate each other  
+      - spring_mongo_angular_docker_net      
+      
+networks:
+  spring_mongo_angular_docker_net:
+    driver: bridge

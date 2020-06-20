@@ -1,0 +1,18 @@
+version: '3'
+services:
+  asmd_frontend_service:
+    build: 
+      # . means the relative path; in this case the root directory where the docker-compose file exists
+      context: .       
+      # the dockerfile that u want to use to create the image     
+      dockerfile: Dockerfile
+    # user defined container name
+    container_name: asmd_frontend 
+    ports:
+      - 4242:4200 
+    volumes:
+      # map host(PC) current directory files to a docker container directory so that if we change something in our host(PC) system it will refect our docker images
+      - .:/home/app  
+      # a named volume for node_modules so that we dont need to create
+      - /home/app/node_modules  
+       
