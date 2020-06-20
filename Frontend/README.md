@@ -9,6 +9,7 @@ cd YOUR_APP_NAME
 
 4. Create a docker file with the following content 
 
+```
 FROM node:slim as build
 RUN mkdir /home/app && chown node:node /home/app
 WORKDIR /home/app
@@ -19,11 +20,14 @@ RUN npm install --no-optional && npm cache clean --force
 ENV PATH /home/app/node_modules/.bin:$PATH
 COPY --chown=node:node . .
 CMD ng serve --host 0.0.0.0
+```
+
 
 5. Create a docker ignore file to avoid copying local node_modules into docker.
 
 6. Create a docker-compose file with 
 
+```
 version: '3'
 services:
   asmd_frontend_service:
@@ -36,6 +40,8 @@ services:
     volumes:
       - .:/home/app  
       - /home/app/node_modules  
+```
+
        
 
 6. To check whether everything is working or not just run
