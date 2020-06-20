@@ -2,8 +2,8 @@
 This project will shows how to dockerize and run a full stack project(angular,spring,mongoDB).
 
 ##Instruction:
-To run both backend and frontend by building the docker files.
 
+To run both backend and frontend by building the docker files.
 >docker-compose.yml
 
 To run both backend and frontend by fetching the docker images which are already built and uploaded to the dockerhub.
