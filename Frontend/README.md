@@ -1,6 +1,6 @@
 #Instructions
 
-1.Install node,angular cli in your local PC
+1. Install node,angular cli in your local PC
 
 2. Get angular project 
 ng new YOUR_APP_NAME
